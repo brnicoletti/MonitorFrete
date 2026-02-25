@@ -1,5 +1,5 @@
 import os
-from Interface import openFile
+from Interface import open_file
 import pandas as pd
 from datetime import datetime
 
@@ -7,7 +7,7 @@ date = datetime.now().strftime("%d_%m_%Y")
 
 def tratamento_csv():
     # Lê e seleciona as colunas de interesse na variável tabela_tratada
-    df = pd.read_csv(openFile())
+    df = pd.read_csv(open_file())
     tabela_tratada = df.loc[:,['ID da venda','Código','SKU', 'Data', 'Frete', 'Valor Unit.', 'Qtd.', 'Frete Vendedor (-)']]
     tabela_tratada['Frete Vendedor (-)'] = tabela_tratada['Frete Vendedor (-)'].str.replace(',','.').astype(float)
     tabela_tratada['Frete/Quant.'] = tabela_tratada['Frete Vendedor (-)'] / tabela_tratada['Qtd.']

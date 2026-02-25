@@ -1,14 +1,15 @@
 import os
+import webbrowser
 import pandas as pd
 import subprocess
 from datetime import datetime
-from Interface import openFile
+from Interface import open_file
 
 conta = "Lufiara"
-excel_path = "C:/Program Files/Microsoft Office/root/Office16/EXCEL.EXE"
-onlyoffice_path = "C:/Program Files/ONLYOFFICE/DesktopEditors/DesktopEditors.exe"
+# excel_path = "C:/Program Files/Microsoft Office/root/Office16/EXCEL.EXE"
+# onlyoffice_path = "C:/Program Files/ONLYOFFICE/DesktopEditors/DesktopEditors.exe"
 # Read the exported file
-df = pd.read_excel(openFile())
+df = pd.read_excel(open_file())
 
 # Converts Column "Data" string in datetime
 dates_list = []
@@ -72,4 +73,4 @@ worksheet.add_table(0, 0, max_row, max_col - 1, {'columns': column_settings})
 
 writer.close()
 # subprocess.Popen([onlyoffice_path, f"{conta}@.xlsx"])
-os.startfile(f"{conta}@.xlsx")
+webbrowser.open(f"{conta}@.xlsx")
